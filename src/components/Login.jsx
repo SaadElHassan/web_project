@@ -23,7 +23,22 @@ function Login({ onLoginSuccess }) {
             <h1 className="text-3xl font-extrabold text-gray-900">Student Portal</h1>
             <p className="text-gray-600 mt-2">Sign in to your account</p>
           </div>
-          
+
+           <form onSubmit={handleLogin} className="space-y-5">
+            <div>
+              <label htmlFor="username" className="block text-sm font-medium text-gray-800 mb-2">
+                Username
+              </label>
+              <input
+                type="text"
+                id="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                placeholder="Enter your username"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg"
+              />
+            </div>
+</form>
 
 
 </div>
