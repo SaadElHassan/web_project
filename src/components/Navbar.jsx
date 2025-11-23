@@ -1,9 +1,15 @@
 import React from 'react'
 
 
-function Navbar() {
+function Navbar({onLogout}) {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    if (onLogout) onLogout();
+    navigate('/');
+  };
   return (
-  <></>
+ <></>
   )
 }
 
