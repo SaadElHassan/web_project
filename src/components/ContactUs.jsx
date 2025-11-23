@@ -76,6 +76,10 @@ function ContactUs() {
                 onChange={handleChange}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg " rows="4" placeholder="How can we help?" />
             </div>
+
+             <div className="pt-2">
+              <button type="submit" className="px-5 py-2 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-lg shadow  transition duration-200">Send Message</button>
+            </div>
             </form>
 </div>
       </main>
