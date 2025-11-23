@@ -51,6 +51,13 @@ function Login({ onLoginSuccess }) {
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg "
               />
             </div>
+             <button
+              type="submit"
+              disabled={!username.trim() || !password.trim()}
+              className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-lg shadow transition duration-200"
+            >
+              Login
+            </button>
 </form>
 
 
