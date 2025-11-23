@@ -13,6 +13,24 @@ function About() {
           <p className="text-gray-700 leading-relaxed">This portal helps students easily discover courses, manage registrations, and view their enrolled classes. It focuses on a clean, responsive experience so you can get tasks done quickly on any device.</p>
         </section>
 
+
+         <section className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+          <div className="p-4 bg-white border rounded-lg shadow-sm">
+            <h3 className="text-lg font-semibold">Discover</h3>
+            <p className="text-sm text-gray-600 mt-2">Search and filter available courses with helpful metadata and clear descriptions.</p>
+          </div>
+          <div className="p-4 bg-white border rounded-lg shadow-sm">
+            <h3 className="text-lg font-semibold">Register</h3>
+            <p className="text-sm text-gray-600 mt-2">Securely enroll in classes and track your registration status in one place.</p>
+          </div>
+          <div className="p-4 bg-white border rounded-lg shadow-sm">
+            <h3 className="text-lg font-semibold">Manage</h3>
+            <p className="text-sm text-gray-600 mt-2">View enrolled courses, drop or swap when allowed, and keep your schedule organized.</p>
+          </div>
+        </section>
+
+        
+
     </main>
     </div>
 
