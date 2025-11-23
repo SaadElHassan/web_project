@@ -36,7 +36,34 @@ function Registration() {
           </button>
         </form>
       </div>
-
+ {registeredCourses.length > 0 && (
+        <div className=" bg-white/70 border border-purple-300 shadow-xl rounded-2xl p-8 max-w-lg w-full flex flex-col items-center">
+          <h3 className="text-xl font-semibold mb-4 text-purple-700">📋 Registered Courses</h3>
+          <table className="min-w-full text-center border-collapse">
+            <thead>
+              <tr>
+                <th className="px-4 py-2 border-b">Course</th>
+                <th className="px-4 py-2 border-b">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {registeredCourses.map(course => (
+                <tr key={course}>
+                  <td className="px-4 py-2 border-b">{course}</td>
+                  <td className="px-4 py-2 border-b">
+                    <button
+                      className="px-3 py-1 bg-red-400 hover:bg-red-600 text-white rounded transition duration-200"
+                      onClick={() => handleRemoveCourse(course)}
+                    >
+                      Remove
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
    </div>
   )
