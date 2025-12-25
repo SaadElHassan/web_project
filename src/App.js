@@ -5,6 +5,7 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Registration from "./components/Registration";
 import ContactUs from "./components/ContactUs";
+import AddCourse from "./components/AddCourse";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,10 +20,6 @@ function App() {
   const handleLogin = () => {
     setIsLoggedIn(true);
   };
-    <div>
-   
-
-    </div>
   return (<>
     
      
@@ -36,9 +33,9 @@ function App() {
       <Route path="/about" Component={About} />
       <Route path="/registration" Component={Registration} />
       <Route path="/contact" Component={ContactUs} />
+      <Route path="/addCourse" Component={AddCourse} />
 
           
-        
 
      </Routes>
     

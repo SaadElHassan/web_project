@@ -1,9 +1,11 @@
-import React, { useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { toast } from "react-toastify";
 
 function Registration() {
     const [selectedCourse, setSelectedCourse] = useState('Math');
   const [registeredCourses, setRegisteredCourses] = useState([]);
-  const courseOptions = ['Physics', 'Math', 'Chemistry', 'Biology', 'Computer Science', 'English', 'History'];
+  const [courseOptions, setCourseOptions] = useState([]);
   const handleAddCourse = (e) => {
     e.preventDefault();
     if (!registeredCourses.includes(selectedCourse)) {
@@ -14,6 +16,27 @@ function Registration() {
   const handleRemoveCourse = (course) => {
     setRegisteredCourses(registeredCourses.filter(c => c !== course));
   };
+
+   const getCoursesNames = async () => {
+    try {
+    
+      const response = await axios.get("http://localhost:5000/courses/getcoursesnames");
+      if (response.status === 200) {
+        setCourseOptions(response.data);
+        
+      }
+      if (response.status === 204) {
+        toast.info("No courses available");
+        setCourseOptions([]);
+      }
+    } catch (err) {
+     console.error(err);
+     toast.error("Something went wrong while fetching courses");
+    } 
+  };
+   useEffect(() => {
+    getCoursesNames();
+  }, []);
   return (
    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-amber-100 via-blue-100 to-purple-100 py-10">
 <div className=" bg-white/70 border border-purple-300 shadow-xl rounded-2xl p-8 max-w-lg w-full flex flex-col items-center mb-10">
@@ -22,10 +45,10 @@ function Registration() {
           <select
             className="px-4 py-2 rounded-lg border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-300 w-full"
             value={selectedCourse}
-            onChange={e => setSelectedCourse(e.target.value)}
+            onChange={(e) => setSelectedCourse(e.target.value)}
           >
             {courseOptions.map(course => (
-              <option key={course} value={course}>{course}</option>
+              <option key={course.key} value={course.name}>{course.name}</option>
             ))}
           </select>
           <button
