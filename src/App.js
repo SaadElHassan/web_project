@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Registration from "./components/Registration";
 import ContactUs from "./components/ContactUs";
 import AddCourse from "./components/AddCourse";
+import AddStudent from "./components/AddStudent";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -34,6 +35,7 @@ function App() {
       <Route path="/registration" Component={Registration} />
       <Route path="/contact" Component={ContactUs} />
       <Route path="/addCourse" Component={AddCourse} />
+      <Route path="/addStudent" Component={AddStudent} />
 
           
 
