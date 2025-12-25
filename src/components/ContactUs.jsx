@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 function ContactUs() {
   var reporter = {
@@ -25,11 +26,11 @@ function ContactUs() {
         reportToAdd
       );
       if (response.status === 201) {
-        alert("Message sent successfully!");
+         toast.success("Profile updated successfully!");
       }
       setState(reporter);
     } catch (err) {
-      alert("Error adding student.");
+       toast.error("Something went wrong");
     }
   };
 

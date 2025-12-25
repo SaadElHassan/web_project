@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import {Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Login from "./components/Login";
 import About from "./components/About";
@@ -6,6 +6,8 @@ import Home from "./components/Home";
 import Registration from "./components/Registration";
 import ContactUs from "./components/ContactUs";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
    const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -21,10 +23,14 @@ function App() {
    
 
     </div>
-  return (
+  return (<>
+    
+     
     <div>
     {isLoggedIn && <Navbar onLogout={handleLogout} />}
- <Routes>
+    <ToastContainer />
+    <Routes>
+      
       <Route path="/" Component={() => <Login onLoginSuccess={handleLogin} />} />
       <Route path="/home" Component={Home} />
       <Route path="/about" Component={About} />
@@ -34,7 +40,10 @@ function App() {
           
         
 
-     </Routes> </div>
+     </Routes>
+    
+  </div>
+     </>
   );
 }
 
