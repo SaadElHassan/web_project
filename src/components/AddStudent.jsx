@@ -8,7 +8,6 @@ function AddStudent() {
 
   // Form states
   const [student_id, setId] = useState("");
-  const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [major, setMajor] = useState("");
@@ -31,18 +30,17 @@ function AddStudent() {
   // Clear form
   const clear = () => {
     setId("");
-    setPassword("");
     setFname("");
     setLname("");
     setMajor("");
   };
   // Add student
   const addStudent = async () => {
-    if (!student_id || !password || !fname || !lname || !major) {
+    if (!student_id || !fname || !lname || !major) {
       toast.error("Please fill in all fields before adding a student.");
       return;
     }
-    const studentToAdd = { student_id, password, fname, lname, major };
+    const studentToAdd = { student_id, fname, lname, major };
     try {
       const response = await axios.post(
         "http://localhost:5000/students/addstudent/",
@@ -69,7 +67,9 @@ function AddStudent() {
         "http://localhost:5000/students/deletestudents/" + studentId
       );
       if (response.status === 200) {
-        setStudents(students.filter((student) => student.student_id !== studentId));
+        setStudents(
+          students.filter((student) => student.student_id !== studentId)
+        );
         toast.success(response.data.message);
       }
     } catch (err) {
@@ -109,19 +109,7 @@ function AddStudent() {
                   onChange={(e) => setId(e.target.value)}
                 />
               </div>
-
               <div>
-                <label className="mb-2 block text-sm font-medium text-slate-700">
-                  password
-                </label>
-                <input
-                  placeholder="Student Password"
-                  className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-900 outline-none"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-               <div>
                 <label className="mb-2 block text-sm font-medium text-slate-700">
                   first name
                 </label>
@@ -132,7 +120,7 @@ function AddStudent() {
                   onChange={(e) => setFname(e.target.value)}
                 />
               </div>
-               <div>
+              <div>
                 <label className="mb-2 block text-sm font-medium text-slate-700">
                   last name
                 </label>
@@ -143,7 +131,7 @@ function AddStudent() {
                   onChange={(e) => setLname(e.target.value)}
                 />
               </div>
-               <div>
+              <div>
                 <label className="mb-2 block text-sm font-medium text-slate-700">
                   major
                 </label>
@@ -187,7 +175,6 @@ function AddStudent() {
                 <thead className="bg-slate-50">
                   <tr className="text-left text-slate-700">
                     <th className="px-6 py-4 font-semibold">Id</th>
-                    <th className="px-6 py-4 font-semibold">Password</th>
                     <th className="px-6 py-4 font-semibold">First Name</th>
                     <th className="px-6 py-4 font-semibold">Last Name</th>
                     <th className="px-6 py-4 font-semibold">Major</th>
@@ -199,7 +186,6 @@ function AddStudent() {
                   {students.map((student) => (
                     <tr key={student.id} className="hover:bg-slate-50">
                       <td className="px-6 py-4">{student.student_id}</td>
-                     <td className="px-6 py-4">{student.password}</td>
                       <td className="px-6 py-4">{student.fname}</td>
                       <td className="px-6 py-4">{student.lname}</td>
                       <td className="px-6 py-4">{student.major}</td>
