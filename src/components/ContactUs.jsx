@@ -14,6 +14,7 @@ function ContactUs() {
   const handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
+  //add report
   const addReport = async () => {
     const name = state.fullname;
     const email = state.email;
@@ -26,11 +27,15 @@ function ContactUs() {
         reportToAdd
       );
       if (response.status === 201) {
-         toast.success("Profile updated successfully!");
+        toast.success("report has been sent successfully!");
       }
       setState(reporter);
     } catch (err) {
-       toast.error("Something went wrong");
+      if (err.status === 400) {
+        toast.error("all fields are required");
+      } else {
+        toast.error("Something went wrong");
+      }
     }
   };
 

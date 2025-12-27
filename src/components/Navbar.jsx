@@ -33,6 +33,7 @@ function Navbar() {
         >
           Students
         </Link>
+
         <Link
           className={`text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-amber-200 transition duration-200 ${
             role === 2 ? "" : "hidden"
@@ -40,6 +41,14 @@ function Navbar() {
           to="/addcourse"
         >
           courses
+        </Link>
+         <Link
+          className={`text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-amber-200 transition duration-200 ${
+            role === 2 ? "" : "hidden"
+          }`}
+          to="/reports"
+        >
+          reports
         </Link>
         <Link
           className={`text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-amber-200 transition duration-200 ${

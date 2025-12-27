@@ -9,6 +9,7 @@ import ContactUs from "./components/ContactUs";
 import AddCourse from "./components/AddCourse";
 import AddStudent from "./components/AddStudent";
 import Welcome  from "./components/Welcome";
+import Reports from "./components/Reports";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -60,6 +61,7 @@ function App() {
             <>
               <Route path="/addCourse" Component={AddCourse} />
               <Route path="/addStudent" Component={AddStudent} />
+              <Route path="/reports" Component={Reports} />
             </>
           )}
         </Routes>
