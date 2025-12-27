@@ -7,7 +7,8 @@ function AddStudent() {
   const [students, setStudents] = useState([]);
 
   // Form states
-  const [student_id, setId] = useState("");
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
   const [major, setMajor] = useState("");
@@ -15,7 +16,7 @@ function AddStudent() {
   const getStudents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/students/getstudents"
+        "http://localhost:5000/users/getstudents"
       );
       if (response.status === 200) {
         setStudents(response.data);
@@ -30,33 +31,34 @@ function AddStudent() {
   // Clear form
   const clear = () => {
     setId("");
+    setPassword("");
     setFname("");
     setLname("");
     setMajor("");
   };
   // Add student
   const addStudent = async () => {
-    if (!student_id || !fname || !lname || !major) {
+    if (!id || !password || !fname || !lname || !major) {
       toast.error("Please fill in all fields before adding a student.");
       return;
     }
-    const studentToAdd = { student_id, fname, lname, major };
+    const studentToAdd = { id, password, fname, lname, major };
     try {
       const response = await axios.post(
-        "http://localhost:5000/students/addstudent/",
+        "http://localhost:5000/users/addstudent/",
         studentToAdd
       );
       if (response.status === 201) {
-        const newStudent = { ...studentToAdd, id: response.data.id };
-        setStudents([...students, newStudent]);
+       
+        setStudents([...students, studentToAdd]);
         toast.success("Student added successfully!");
       }
       clear();
     } catch (err) {
-      if (err.status === 400 && student_id) {
+      if (err.status === 400 && id) {
         toast.error(err.response?.data?.message || "id should be a number");
       } else {
-        toast.error("Something went wrong while deleting the student");
+        toast.error("Something went wrong while adding the student");
       }
     }
   };
@@ -64,11 +66,11 @@ function AddStudent() {
   const deleteStudent = async (studentId) => {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/students/deletestudents/" + studentId
+        "http://localhost:5000/users/deletestudents/" + studentId
       );
       if (response.status === 200) {
         setStudents(
-          students.filter((student) => student.student_id !== studentId)
+          students.filter((student) => student.id !== studentId)
         );
         toast.success(response.data.message);
       }
@@ -105,8 +107,19 @@ function AddStudent() {
                 <input
                   placeholder="Student ID"
                   className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-900 outline-none"
-                  value={student_id}
+                  value={id}
                   onChange={(e) => setId(e.target.value)}
+                />
+              </div>
+               <div>
+                <label className="mb-2 block text-sm font-medium text-slate-700">
+                  id
+                </label>
+                <input
+                  placeholder="Student ID"
+                  className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-900 outline-none"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <div>
@@ -185,14 +198,14 @@ function AddStudent() {
                 <tbody className="divide-y divide-slate-200 bg-white">
                   {students.map((student) => (
                     <tr key={student.id} className="hover:bg-slate-50">
-                      <td className="px-6 py-4">{student.student_id}</td>
+                      <td className="px-6 py-4">{student.id}</td>
                       <td className="px-6 py-4">{student.fname}</td>
                       <td className="px-6 py-4">{student.lname}</td>
                       <td className="px-6 py-4">{student.major}</td>
                       <td className="px-6 py-4">
                         <button
                           className="rounded-lg bg-rose-600 px-4 py-2 text-xs font-semibold text-white hover:bg-rose-500 transition"
-                          onClick={() => deleteStudent(student.student_id)}
+                          onClick={() => deleteStudent(student.id)}
                         >
                           Delete
                         </button>

@@ -1,19 +1,48 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import axios from 'axios';
+import React, { useState, useContext} from 'react';
+import { toast } from "react-toastify";
+import { AuthContext } from '../App';
 
 function Login({ onLoginSuccess }) {
-  const [username, setUsername] = useState('');
+  const { login } = useContext(AuthContext);
+  
+  const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate();
-  const handleLogin = (e) => {
+  const clear = () => {
+    setId("");
+    setPassword("");
+  };
+  
+ 
+//get users role
+ const getUser = async () => {
 
-    e.preventDefault();
-    if (username.trim() && password.trim()) {
-      if (onLoginSuccess) onLoginSuccess();
-      navigate('/home');
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/users/getusersrole/",{
+          id,
+          password
+        }
+      );
+      if (response.status === 200) {
+        console.log(response.data);
+        login(response.data);
+        toast.success("Login successful");
+      }
+      if (response.status === 204) {
+        toast.error("id or password are wrong")
+        clear();
+      }
+    } catch (err) {
+      
+      toast.error("Something went wrong");
+     
     }
-};
+  };
+  
+
+
+
 
   return (
 <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center px-4">
@@ -24,17 +53,17 @@ function Login({ onLoginSuccess }) {
             <p className="text-gray-600 mt-2">Sign in to your account</p>
           </div>
 
-           <form onSubmit={handleLogin} className="space-y-5">
+           <form onSubmit={(e) => { e.preventDefault(); getUser(); }} className="space-y-5">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-800 mb-2">
                 Username
               </label>
               <input
                 type="text"
-                id="username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Enter your username"
+                id="id"
+                value={id}
+                onChange={(e) => setId(e.target.value)}
+                placeholder="Enter your ID"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg"
               />
             </div>
@@ -53,7 +82,7 @@ function Login({ onLoginSuccess }) {
             </div>
              <button
               type="submit"
-              disabled={!username.trim() || !password.trim()}
+              disabled={!id.trim() || !password.trim()}
               className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-600 disabled:bg-gray-400 text-white font-semibold rounded-lg shadow transition duration-200"
             >
               Login
