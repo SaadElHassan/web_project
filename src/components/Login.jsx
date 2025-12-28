@@ -23,9 +23,7 @@ const u = { id, password };
         u
       );
       if (response.status === 200) {
-       
         login(response.data);
-        toast.success(" Successful Login");
       }
       if (response.status === 204) {
         toast.error("id or password are wrong")
@@ -38,10 +36,6 @@ const u = { id, password };
     }
   };
   
-
-
-
-
   return (
 <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-50 flex items-center justify-center px-4">
       <div className="w-full max-w-md">

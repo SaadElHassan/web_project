@@ -25,6 +25,22 @@ function Navbar() {
         >
           Home
         </Link>
+         <Link
+          className={`text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-amber-200 transition duration-200 ${
+            role === 2 ? "" : "hidden"
+          }`}
+          to="/homead"
+        >
+          Home
+        </Link>
+         <Link
+          className={`text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-amber-200 transition duration-200 ${
+            role === 2 ? "" : "hidden"
+          }`}
+          to="/aboutad"
+        >
+          About
+        </Link>
         <Link
           className={`text-white font-medium px-4 py-2 rounded-lg hover:bg-blue-600 hover:text-amber-200 transition duration-200 ${
             role === 2 ? "" : "hidden"

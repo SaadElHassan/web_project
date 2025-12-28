@@ -136,7 +136,7 @@ function Registration() {
         </form>
       </div>
       {/*table*/}
-      <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+      <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm w-full max-w-7xl">
         <div className="mb-6">
           <h2 className="text-xl font-semibold text-slate-900">
             Courses (Table)
