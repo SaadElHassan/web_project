@@ -76,7 +76,7 @@ function AddCourse() {
       <div className="min-h-screen bg-slate-50 py-10">
         <div className="mx-auto max-w-4xl px-6">
           <div className="mb-10 text-center">
-            <h1 className="text-3xl font-bold text-slate-900">Add Course</h1>
+            <h1 className="text-3xl font-bold text-slate-900">Course section </h1>
           </div>
           {/* Form Section */}
           <div className="mb-8 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
