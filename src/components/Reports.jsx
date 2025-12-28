@@ -77,7 +77,7 @@ function Reports() {
 
                   <tr className="hidden">
                     <td colSpan={3} className="px-6 py-4 text-slate-600">
-                      No students loaded yet.
+                      No reports loaded yet.
                     </td>
                   </tr>
                 </tbody>

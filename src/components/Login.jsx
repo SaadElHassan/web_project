@@ -16,18 +16,16 @@ function Login({ onLoginSuccess }) {
  
 //get users role
  const getUser = async () => {
-
+const u = { id, password };
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/getusersrole/",{
-          id,
-          password
-        }
+        "http://localhost:5000/users/getusersrole/",
+        u
       );
       if (response.status === 200) {
-        console.log(response.data);
+       
         login(response.data);
-        toast.success("Login successful");
+        toast.success(" Successful Login");
       }
       if (response.status === 204) {
         toast.error("id or password are wrong")

@@ -34,13 +34,14 @@ function App() {
 
   return (
     <>
+    
       <AuthContext.Provider value={{ role, login, logout }}>
         {role!==0 && <Navbar />}
        
         <ToastContainer />
         <Routes>
           
-    <Route path = "/" Component={Welcome} />
+    <Route path="/" element={role ? <Welcome /> : <Navigate to="/login" replace />} />
    
    
           {!role && (<Route path="*" element={<Navigate to="/login" replace />} />)}

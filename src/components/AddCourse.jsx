@@ -10,6 +10,7 @@ function AddCourse() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  //get courses
   const getCourses = async () => {
     try {
       const response = await axios.get(
@@ -43,13 +44,13 @@ function AddCourse() {
         courseToAdd
       );
       if (response.status === 201) {
-        const newCourse = { ...courseToAdd, id: response.data.id };
-        setCourses([...courses, newCourse]);
+       
+        setCourses([...courses, courseToAdd]);
         toast.success("Course added successfully!");
       }
       clear();
     } catch (err) {
-      toast.error(err.status);
+      toast.error("Something went wrong while adding the course");
     }
   };
   //delete course

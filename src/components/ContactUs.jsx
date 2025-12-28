@@ -41,14 +41,14 @@ function ContactUs() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-green-50 to-white flex items-start justify-center py-12 px-4">
-      <main className="w-full max-w-3xl">
-        <header className="mb-6 text-center">
+      <div className="w-full max-w-3xl">
+        <div className="mb-6 text-center">
           <h1 className="text-3xl font-extrabold text-gray-900">Contact Us</h1>
           <p className="mt-2 text-gray-600">
             Have a question or need help? Send us a message and we'll get back
             to you.
           </p>
-        </header>
+        </div>
 
         <div className="bg-white shadow-sm rounded-2xl border border-green-100 p-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
@@ -129,7 +129,7 @@ function ContactUs() {
             </div>
           </form>
         </div>
-      </main>
+      </div>
     </div>
   );
 }

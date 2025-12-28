@@ -8,12 +8,12 @@ function Navbar() {
 
  
   return (
-    <nav className="bg-gradient-to-r from-blue-500 via-red-300 to-purple-400 shadow-lg px-8 py-3 flex items-center justify-between w-full sticky top-0 z-50">
+    <div className="bg-gradient-to-r from-blue-500 via-red-300 to-purple-400 shadow-lg px-8 py-3 flex items-center justify-between w-full sticky top-0 z-50">
       <div className="flex items-center gap-2">
-        <span className="text-2xl font-bold text-white">🎓</span>
-        <span className="text-xl font-semibold text-white  drop-shadow">
+        <div className="text-2xl font-bold text-white">🎓</div>
+        <div className="text-xl font-semibold text-white  drop-shadow">
           Student Portal
-        </span>
+        </div>
       </div>
 
       <div className="flex gap-6 items-center">
@@ -81,7 +81,7 @@ function Navbar() {
           Logout
         </button>
       </div>
-    </nav>
+    </div>
   );
 }
 

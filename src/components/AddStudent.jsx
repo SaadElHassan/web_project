@@ -113,10 +113,10 @@ function AddStudent() {
               </div>
                <div>
                 <label className="mb-2 block text-sm font-medium text-slate-700">
-                  id
+                  password
                 </label>
                 <input
-                  placeholder="Student ID"
+                  placeholder="Student Password"
                   className="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-slate-900 outline-none"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -188,6 +188,7 @@ function AddStudent() {
                 <thead className="bg-slate-50">
                   <tr className="text-left text-slate-700">
                     <th className="px-6 py-4 font-semibold">Id</th>
+                    <th className="px-6 py-4 font-semibold">Password</th>
                     <th className="px-6 py-4 font-semibold">First Name</th>
                     <th className="px-6 py-4 font-semibold">Last Name</th>
                     <th className="px-6 py-4 font-semibold">Major</th>
@@ -199,6 +200,7 @@ function AddStudent() {
                   {students.map((student) => (
                     <tr key={student.id} className="hover:bg-slate-50">
                       <td className="px-6 py-4">{student.id}</td>
+                      <td className="px-6 py-4">{student.password}</td>
                       <td className="px-6 py-4">{student.fname}</td>
                       <td className="px-6 py-4">{student.lname}</td>
                       <td className="px-6 py-4">{student.major}</td>
