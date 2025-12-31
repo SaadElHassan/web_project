@@ -19,7 +19,7 @@ function Login({ onLoginSuccess }) {
 const u = { id, password };
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/getusersrole/",
+        `${process.env.REACT_APP_API_URL}/users/getusersrole/`,
         u
       );
       if (response.status === 200) {

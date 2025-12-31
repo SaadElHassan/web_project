@@ -14,7 +14,7 @@ function AddCourse() {
   const getCourses = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/courses/getcourses"
+        `${process.env.REACT_APP_API_URL}/courses/getcourses`
       );
       if (response.status === 200) {
         setCourses(response.data);
@@ -40,7 +40,7 @@ function AddCourse() {
     const courseToAdd = { name, description };
     try {
       const response = await axios.post(
-        "http://localhost:5000/courses/addcourse",
+        `${process.env.REACT_APP_API_URL}/courses/addcourse`,
         courseToAdd
       );
       if (response.status === 201) {
@@ -58,7 +58,7 @@ function AddCourse() {
     try {
      
       const response = await axios.delete(
-        "http://localhost:5000/courses/deletecourse/" + courseName
+        `${process.env.REACT_APP_API_URL}/courses/deletecourse/` + courseName
       );
       if (response.status === 200) {
         setCourses(courses.filter((course) => course.name !== courseName));

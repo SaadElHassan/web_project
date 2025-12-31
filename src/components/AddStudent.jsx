@@ -16,7 +16,7 @@ function AddStudent() {
   const getStudents = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/users/getstudents"
+        `${process.env.REACT_APP_API_URL}/users/getstudents`
       );
       if (response.status === 200) {
         setStudents(response.data);
@@ -45,7 +45,7 @@ function AddStudent() {
     const studentToAdd = { id, password, fname, lname, major };
     try {
       const response = await axios.post(
-        "http://localhost:5000/users/addstudent/",
+        `${process.env.REACT_APP_API_URL}/users/addstudent/`,
         studentToAdd
       );
       if (response.status === 201) {
@@ -66,7 +66,7 @@ function AddStudent() {
   const deleteStudent = async (studentId) => {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/users/deletestudents/" + studentId
+        `${process.env.REACT_APP_API_URL}/users/deletestudents/` + studentId
       );
       if (response.status === 200) {
         setStudents(

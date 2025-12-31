@@ -10,7 +10,7 @@ function Reports() {
   const getReports = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/reports/getreports"
+        `${process.env.REACT_APP_API_URL}/reports/getreports`
       );
       if (response.status === 200) {
         setReports(response.data);
@@ -26,7 +26,7 @@ function Reports() {
     const deleteReport = async (reportName) => {
     try {
         const response = await axios.delete(
-        "http://localhost:5000/reports/deletereport/" + reportName
+        `${process.env.REACT_APP_API_URL}/reports/deletereport/` + reportName
       );
         if (response.status === 200) {
         setReports(reports.filter((report) => report.name !== reportName));

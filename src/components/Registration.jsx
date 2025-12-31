@@ -15,7 +15,7 @@ function Registration() {
     try {
       const newCourse = { name, description };
       const response = await axios.post(
-        "http://localhost:5000/selectedcourses/addselectedcourse",
+        `${process.env.REACT_APP_API_URL}/selectedcourses/addselectedcourse`,
         newCourse
       );
       if (response.status === 201) {
@@ -32,7 +32,7 @@ function Registration() {
   const getRegisteredCourses = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/selectedcourses/getselectedcourses"
+        `${process.env.REACT_APP_API_URL}/selectedcourses/getselectedcourses`
       );
       if (response.status === 200) {
         setRegisteredCourses(response.data);
@@ -49,7 +49,7 @@ function Registration() {
   const getCourseByName = async (courseName) => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/courses/getcoursesbyname/" + courseName
+        `${process.env.REACT_APP_API_URL}/courses/getcoursesbyname/` + courseName
       );
       if (response.status === 200) {
         setName(response.data.name);
@@ -64,7 +64,7 @@ function Registration() {
   const handleRemoveCourse = async (courseN) => {
     try {
       const response = await axios.delete(
-        "http://localhost:5000/selectedcourses/deleteselectedcourse/" + courseN
+        `${process.env.REACT_APP_API_URL}/selectedcourses/deleteselectedcourse/` + courseN
       );
       if (response.status === 200) {
         setRegisteredCourses(
@@ -80,7 +80,7 @@ function Registration() {
   const getCourses = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/courses/getcourses"
+        `${process.env.REACT_APP_API_URL}/courses/getcourses`
       );
       if (response.status === 200) {
         setCourseOptions(response.data);
